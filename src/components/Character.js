@@ -7,12 +7,19 @@ const [detail, setDetail] = useState({});
 const [showDetail, setShowDetail] = useState(false);
 
 const clickHandler = async (e) =>{
+  if(showDetail){
+    setShowDetail(false);
+    setDetail({})
+  } else {
+
+  
     e.preventDefault();
     console.log('url', charObj.url);
     let characterDetail = await StarWarsApi.makeGetRequest(charObj.url);
     setDetail(characterDetail);
     setShowDetail(true);
     console.log('button clicked');
+  }
 }
 
   return (
@@ -35,6 +42,8 @@ const clickHandler = async (e) =>{
 }
 
 const StyledWrapper = styled.div`
+  
+
   button {
    display: flex;
    align-items: center;
